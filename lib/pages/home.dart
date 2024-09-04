@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Home extends StatefulWidget {
   final VoidCallback goPageEvent;
   final VoidCallback goPageWisata;
@@ -14,13 +13,60 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My App"),
+        backgroundColor: Colors.blueAccent,
+        title: Text('Search'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+        ],
       ),
-      body: Container(
-        color: Colors.blueAccent,
-        child: Center(
-          child: Text("Halaman Beranda"),
-        ),
+      body: Column(
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image(
+                  image: AssetImage("assets/doraemon.png"),
+                  height: 150,
+                  width: 400,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 2), // Add space between the image and the row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 4, top: 0, left: 8),
+                color: Colors.transparent,
+                child: const Text(
+                  'Jelajahi Karanganyar',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(right: 8),
+                child: TextButton(
+                  onPressed: widget.goPageEvent,
+                  child: Text(
+                    'Lihat Semua',
+                    style: TextStyle(
+                        color: Colors.blue[600],
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
